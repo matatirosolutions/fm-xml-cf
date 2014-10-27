@@ -1,0 +1,12 @@
+Let ([ 
+
+	NodeStart			= Position ( XML ; ">" ; 1 ; 1 ) + 1;
+	NodeEnd			= Position ( XML ; "</" ; NodeStart; 1);
+
+	Result			= Case(
+		IsEmpty ( XML ) or NodeStart = 0 or NodeEnd = 0; "" ;
+		Middle ( XML ; NodeStart ; NodeEnd - NodeStart ) 
+  	)
+    ]; 
+  Result
+)

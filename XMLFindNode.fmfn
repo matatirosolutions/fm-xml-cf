@@ -1,0 +1,22 @@
+Let([
+	// get the 'next' child node
+	Instance		= Case ( IsEmpty ( instance ); 1; instance );
+	NodeContent	= XMLNode( XML; node; Instance );
+	
+	// check if it matches
+	QueryList		= Substitute ( query; "="; "¶" );
+	NodeAttribute	= XMLAttribute( NodeContent; GetValue( QueryList; 1) );
+	Stack 		= If ( NodeAttribute = Middle ( GetValue (QueryList; 2); 2; Length ( GetValue (QueryList; 2) ) - 2);
+		stack & NodeContent & "¶";
+		stack
+	);
+
+	// if there was no node content either the node doesn't exist, or we've run out of matching child nodes
+	Result		= Case ( IsEmpty ( NodeContent); 
+		Stack;
+		XMLFindNode ( XML; node; query; Instance + 1; stack)
+	)
+
+    ];
+  Result
+)

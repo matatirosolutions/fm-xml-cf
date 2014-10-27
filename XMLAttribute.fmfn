@@ -1,0 +1,13 @@
+Let ( [ 
+	AttributeStart		= Position ( XML ; attribute; 1; 1);
+	Quote			= Case(Position ( XML ; "\""; AttributeStart; 1) = 0; "'"; "\"");
+	DataStart			= Position ( XML ; Quote; AttributeStart; 1) + 1;
+	DataEnd			= Position ( XML ; Quote; DataStart; 1);
+
+	Result			= Case(
+		IsEmpty ( XML ) or IsEmpty(DataStart); "" ;
+		Middle ( XML ; DataStart ; DataEnd - DataStart ) 
+  	)
+    ]; 
+  Result
+)

@@ -1,0 +1,33 @@
+Let ([
+	// escape any / character within [ ] in the XPath
+	Brac			= Middle ( XPath; Position ( XPath; "["; 1; 1) + 1; Position ( XPath; "]"; 1; 1) - Position ( XPath; "["; 1; 1) -1 );
+	SafePath		= Substitute ( XPath; Brac; ( Substitute ( Brac; "/"; "~|~") ) );
+	
+	// find the name of the node, and the sepcific instance where requested
+  	NodeList		= Substitute(SafePath; "/"; "¶");
+	FirstNode		= Substitute ( GetValue(NodeList; 2); "~|~"; "/" );
+	Node			= Case ( Position ( FirstNode; "["; 1 ; 1) = 0; FirstNode; Left ( FirstNode; Position ( FirstNode; "["; 1 ; 1) - 1 ) ); 
+	Instance		= Middle ( FirstNode; Position ( FirstNode; "["; 1; 1) + 1; Position ( FirstNode; "]"; 1; 1) - Position ( FirstNode; "["; 1; 1) -1 );
+
+	// determine which function we need to call
+	SubXML		= Case ( Position ( Node; "@"; 1; 1)  ≠  0; 
+		
+		// if there's an @ in the node we need an attribute off the node
+		XMLAttribute( XML ; Substitute ( Node ; "@"; "" ) ) ;
+
+		Case ( Position ( Instance; "@"; 1; 1)  ≠  0;
+
+			// if there's an @ in the instance, we need nodes where an attribute matches a specific value
+			XMLFindNode ( XML; Node; Substitute ( Instance ; "@"; "" ); 1; "");
+
+			// otherwise we just need the node requested
+			XMLNode (XML ; Node ; Instance)
+		)
+	);
+
+	// drop the first node of the front of the path and recurse if necesary
+	NewPath		= Substitute (XPath; "/" & FirstNode; "");
+	Result		= Case(IsEmpty(NewPath) or NewPath  = "/"; SubXML; XMLXPath(SubXML; NewPath))
+    ];
+  Result
+)

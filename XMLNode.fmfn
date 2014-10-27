@@ -1,0 +1,18 @@
+Let ( [
+ 
+	NodeLength 		= Length ( node ) ; 
+	GetInstance 		= If ( IsEmpty ( instance ) ; 1 ; instance );
+	
+	StartTag			= Position ( XML ; "<" & node & ">"; 1 ; GetInstance );
+	NodeStart			= Case ( StartTag = 0; Position ( XML ; "<" & node & " "; 1 ; GetInstance ); StartTag );
+
+	EndTag			= Position ( XML ; "</" & node & ">"; NodeStart; 1);
+	NodeEnd			= Case(EndTag = 0; Position ( XML ; "/>"; NodeStart; 1) -1; EndTag + NodeLength) +3 ;
+
+	Result			= Case(
+		IsEmpty ( XML ) or IsEmpty ( node ) or NodeStart = 0 ; "" ;
+		Middle ( XML ; NodeStart ; NodeEnd - NodeStart ) 
+  	)
+    ]; 
+  Result
+)

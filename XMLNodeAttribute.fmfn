@@ -1,0 +1,18 @@
+Let ( [ 
+	NodeLength 		= Length ( node ) ;
+	AttributeLength	= Length ( attribute );
+	GetInstance 		= If ( IsEmpty ( instance ) ; 1 ; instance );
+	
+	NodeOpen		= Position ( XML ; "<" & node ; 1 ; GetInstance ) + NodeLength;
+	AttributeStart		= Position ( XML ; attribute; NodeOpen; 1);
+	Quote			= Case(Position ( XML ; "\""; AttributeStart; 1) = 0; "'"; "\"");
+	DataStart			= Position ( XML ; Quote; AttributeStart; 1) + 1;
+	DataEnd			= Position ( XML ; Quote; DataStart; 1);
+
+	Result			= Case(
+		IsEmpty ( XML ) or IsEmpty ( node ) or NodeOpen = 0 or AttributeStart = 0; "" ;
+		Middle ( XML ; DataStart ; DataEnd - DataStart ) 
+  	)
+    ]; 
+  Result
+)
