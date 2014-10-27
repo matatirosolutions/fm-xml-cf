@@ -47,7 +47,7 @@ The examples below show the usage of `XMLXPath()` based on the following XML
 #### Get the name of the account holder
 ```
 Let([
-    NameNode = XMLPath( XML; "/stock/account/name" )
+    NameNode = XMLXPath( XML; "/stock/account/name" )
   ];
  XMLValue(NameNode)
 )
@@ -60,7 +60,7 @@ Some Company
 #### Get the long name of the first colour
 ```
 Let([
-    ColourNode = XMLPath( XML; "/stock/colours/colour[1]/longname")
+    ColourNode = XMLXPath( XML; "/stock/colours/colour[1]/longname")
   ];
  XMLValue(ColourNode)
 )
@@ -71,10 +71,10 @@ Antique Cherry Red
 ```
 
 
-#### Get the colourname attribure of the third colour
+#### Get the colourname attribute of the third colour
 ```
 Let([
-    Attribute = XMLPath( XML; "/stock/colours/colour[3]/@colourname")
+    Attribute = XMLXPath( XML; "/stock/colours/colour[3]/@colourname")
   ];
  Attribute
 )
@@ -88,7 +88,7 @@ Antique Cherry Red
 #### Find the value of the 'fts' attribute for size XXL where the colour colourname attribute is ASA
 ```
 Let([
-    FTS = XMLPath( XML; "/stock/colours/colour[@colourname='ASA']/sizes/p[@size='XXL']" )
+    FTS = XMLXPath( XML; "/stock/colours/colour[@colourname='ASA']/sizes/p[@size='XXL']" )
   ];
  FTS
 )
