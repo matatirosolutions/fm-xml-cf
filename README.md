@@ -22,7 +22,7 @@ This is the core function which you will most likely use. It relies on three of 
 - /node/child[1]/@argument - will return the requested argument from the requested node
 - /node/child[@argument='something'] - will return all child nodes where the requested argument matches the query (wrapped in single quotes).
  
-Essentially the function will recurse through the requested XPath until it locates the specific data required. Note that at this time the XPath selectors are limitied to those described above.
+Essentially the function will recurse through the requested XPath until it locates the specific data required. Note that at this time the XPath selectors are limitied to those described above - if you've got ideas for others to add let us know (pull requests always welcome :-)
 
 ### XMLValue
 
