@@ -88,7 +88,7 @@ BLK
 #### Find the value of the 'fts' attribute for size XXL where the colour colourname attribute is ASA
 ```
 Let([
-    FTS = XMLXPath( XML; "/stock/colours/colour[@colourname='ASA']/sizes/p[@size='XXL']" )
+    FTS = XMLXPath( XML; "/stock/colours/colour[@colourname='ASA']/sizes/p[@size='XXL']/@fts" )
   ];
  FTS
 )
