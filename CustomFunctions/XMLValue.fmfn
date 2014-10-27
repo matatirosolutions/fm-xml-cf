@@ -1,3 +1,44 @@
+/**
+ * =====================================
+ * XMLValue
+ *
+ * PURPOSE:
+ *		Return the node content of the first node in the passed XML. The assumption being
+ *		that XMLXPath will have been used to locate the specific node in a larger XML document.
+ *
+ * RETURNS:
+ *		A string containing the requested value, or null if
+ *		if it was not able to locate the requested node
+ *
+ * PARAMETERS: 
+ *		XML			The XML string to parse
+ *
+ * DEPENDENCIES:
+ *		none
+ *
+ * VARIABLES:
+ *		none
+ *
+ * NOTES:
+ *		none
+ *
+ * VERSION:
+ *		1.0
+ *
+ * RELEASE: 
+ *		2014-10-27
+ *
+ * AUTHOR:
+ *		Steve Winter
+ *		Matatiro Solutions
+ *		steve@msdev.co.uk
+ *
+ * REFERENCES:
+ *		FM XML Custom functions on github https://github.com/matatirosolutions/fm-xml-cf
+ * 		Andy Knasinski's 'extract data' custom function http://www.briandunning.com/cf/1
+ * =====================================
+ */
+
 Let ([ 
 
 	NodeStart			= Position ( XML ; ">" ; 1 ; 1 ) + 1;

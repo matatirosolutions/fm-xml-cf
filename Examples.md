@@ -81,7 +81,7 @@ Let([
 ```
 Will return
 ```
-Antique Cherry Red
+BLK
 ```
 
 

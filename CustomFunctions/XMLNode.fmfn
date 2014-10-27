@@ -1,3 +1,45 @@
+/**
+ * =====================================
+ * XMLNode
+ *
+ * PURPOSE:
+ *		Used by XMLXPath to locate the content of the requested node from within the XML
+ *
+ * RETURNS:
+ *		A string containing the requested node content (including the XML tags), or null if
+ *		if it was not able to locate the requested node
+ *
+ * PARAMETERS: 
+ *		XML			The XML string to parse
+ *		node		Which node within the XML to locate
+ *		instance	Which instance of that node (in cases where there are multiple matching nodes)
+ *
+ * DEPENDENCIES:
+ *		none
+ *
+ * VARIABLES:
+ *		none
+ *
+ * NOTES:
+ *		none
+ *
+ * VERSION:
+ *		1.0
+ *
+ * RELEASE: 
+ *		2014-10-27
+ *
+ * AUTHOR:
+ *		Steve Winter
+ *		Matatiro Solutions
+ *		steve@msdev.co.uk
+ *
+ * REFERENCES:
+ *		FM XML Custom functions on github https://github.com/matatirosolutions/fm-xml-cf
+ * 		Andy Knasinski's 'extract data' custom function http://www.briandunning.com/cf/1
+ * =====================================
+ */
+
 Let ( [
  
 	NodeLength 		= Length ( node ) ; 

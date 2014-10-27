@@ -1,3 +1,47 @@
+/**
+ * =====================================
+ * XMLNodeAttribute
+ *
+ * PURPOSE:
+ *		Return the requested attribute from the requested node in the passed XML
+ *		In almost all instances you would be as well off using an approrpraitely formed
+ * 		XPath andthe XMLXPath fucntion instead.
+ *
+ * RETURNS:
+ *		A string containing the requested value, or null if
+ *		if it was not able to locate the requested node or attribute
+ *
+ * PARAMETERS: 
+ *		XML			The XML string to parse
+ *		node		Which node within the XML to locate
+ *		instance	Which instance of that node (in cases where there are multiple matching nodes)
+ *		attribute	The attribute to locate the value for
+ *
+ * DEPENDENCIES:
+ *		none
+ *
+ * VARIABLES:
+ *		none
+ *
+ * NOTES:
+ *		none
+ *
+ * VERSION:
+ *		1.0
+ *
+ * RELEASE: 
+ *		2014-10-27
+ *
+ * AUTHOR:
+ *		Steve Winter
+ *		Matatiro Solutions
+ *		steve@msdev.co.uk
+ *
+ * REFERENCES:
+ *		FM XML Custom functions on github https://github.com/matatirosolutions/fm-xml-cf
+ * =====================================
+ */
+ 
 Let ( [ 
 	NodeLength 		= Length ( node ) ;
 	AttributeLength	= Length ( attribute );

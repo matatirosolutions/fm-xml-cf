@@ -1,3 +1,47 @@
+/**
+ * =====================================
+ * XMLAttribute
+ *
+ * PURPOSE:
+ *		Used by XMLXPath to locate the value of the requested attribute.
+ *		This function will look for the first instance of the attribute string in the XML
+ * 		no matter where it may occur in the XML, then look for the next quote marks
+ *		
+ *		It can cope with XML using either single or double quotes.
+ *
+ * RETURNS:
+ *		A string containing the requested value, or null if
+ *		if it was not able to locate the requested attribute
+ *
+ * PARAMETERS: 
+ *		XML			The XML string to parse
+ *		attribute	The attribute to locate the value for
+ *
+ * DEPENDENCIES:
+ *		none
+ *
+ * VARIABLES:
+ *		none
+ *
+ * NOTES:
+ *		none
+ *
+ * VERSION:
+ *		1.0
+ *
+ * RELEASE: 
+ *		2014-10-27
+ *
+ * AUTHOR:
+ *		Steve Winter
+ *		Matatiro Solutions
+ *		steve@msdev.co.uk
+ *
+ * REFERENCES:
+ *		FM XML Custom functions on github https://github.com/matatirosolutions/fm-xml-cf
+ * =====================================
+ */
+ 
 Let ( [ 
 	AttributeStart		= Position ( XML ; attribute; 1; 1);
 	Quote			= Case(Position ( XML ; "\""; AttributeStart; 1) = 0; "'"; "\"");
