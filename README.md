@@ -38,7 +38,7 @@ Returns the value content of a node (as opposed to the node itself). Typically t
 XMLNodeAttribute ( XML; node; instance; attribute )
 ```
 
-Used as a shortcut to retrieve a specific attribute from a specific node. Note that this is simpler to sue, but more fragile than using `XMLXpath()` because it will find the requested instance of node in the XML, even if that's not necessarily in the correct place.
+Used as a shortcut to retrieve a specific attribute from a specific node. Note that this is simpler to use, but more fragile than using `XMLXpath()` because it will find the requested instance of node in the XML, even if that's not necessarily in the correct place.
 
 ### XMLAttribute
 
