@@ -3,11 +3,11 @@
  * XMLXpath
  *
  * PURPOSE:
- *		Parse XML for information based on XPath (style) selectors
+ *		Parse XML for information based on a limitied subset of XPath selectors.
  *
  * RETURNS:
  *		A string containing the requested XML node(s) or attribute, or null if
- *		if it was not able to locate the reuqested path
+ *		if it was not able to locate the requested path.
  *
  * PARAMETERS: 
  *		XML			The XML string to parse
@@ -26,8 +26,9 @@
  *
  * VERSION:
  *		1.0			Initial release
- *		1.0.1		Correcetion to NewPath calculation to overcome issue identified by David Wolz dwolz@specvet.com
- *					which resulted in errors when a child node was a plural of its immediate parent
+ *		1.0.1		Correcetion to NewPath calculation to overcome issue identified by David Wolz 
+ *					dwolz@specvet.com which resulted in errors when a child node was a plural 
+ *					of its immediate parent
  *
  * RELEASE: 
  *		1.0			2014-10-27
@@ -39,6 +40,7 @@
  *		steve@msdev.co.uk
  *
  * REFERENCES:
+ *		FM XML Custom functions on github https://github.com/matatirosolutions/fm-xml-cf
  *		Michael Wallace's initial XPath function http://www.briandunning.com/cf/976
  * 		Andy Knasinski's 'extract data' custom function http://www.briandunning.com/cf/1
  * =====================================
