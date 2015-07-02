@@ -18,7 +18,7 @@ XMLXPath ( XML; XPath )
 This is the core function which you will most likely use. It relies on three of the other custom functions to be present. The function supports the following
 
 - /node - will return the XML of the requested node - note that unlike Andy's function you get the full XML node back, not the content of the node
-- /node/child[1] - will return the first child node of the parent node (again, the full XML) to get the 
+- /node/child[1] - will return the first child node of the parent node (again, the full XML) to get just the value (assuming no further child nodes) use XMLValue() on the result
 - /node/child[1]/@argument - will return the requested argument from the requested node
 - /node/child[@argument='something'] - will return all child nodes where the requested argument matches the query (wrapped in single quotes).
  
