@@ -75,7 +75,7 @@ Let ([
 
 	// drop the first node of the front of the path and recurse if necesary
 	NewPath		= Right(XPath; Length(XPath) - Length("/" & FirstNode));
-	Result		= Case(IsEmpty(NewPath) or NewPath  = "/"; SubXML; XMLXPath(SubXML; NewPath))
+	Result		= Case(IsEmpty(NewPath) or IsEmpty(SubXML) or NewPath  = "/"; SubXML; XMLXPath(SubXML; NewPath))
     ];
   Result
 )
