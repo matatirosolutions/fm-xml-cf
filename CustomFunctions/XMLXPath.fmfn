@@ -1,13 +1,13 @@
 /**
  * =====================================
- * XMLXPath
+ * XMLXpath
  *
  * PURPOSE:
- *		Parse XML for information based on a limitied subset of XPath selectors.
+ *		Parse XML for information based on XPath (style) selectors
  *
  * RETURNS:
  *		A string containing the requested XML node(s) or attribute, or null if
- *		if it was not able to locate the requested path
+ *		if it was not able to locate the reuqested path
  *
  * PARAMETERS: 
  *		XML			The XML string to parse
@@ -25,10 +25,13 @@
  *		none
  *
  * VERSION:
- *		1.0
+ *		1.0			Initial release
+ *		1.0.1		Correcetion to NewPath calculation to overcome issue identified by David Wolz dwolz@specvet.com
+ *					which resulted in errors when a child node was a plural of its immediate parent
  *
  * RELEASE: 
- *		2014-10-27
+ *		1.0			2014-10-27
+ *		1.0.1		2015-07-02
  *
  * AUTHOR:
  *		Steve Winter
@@ -36,7 +39,6 @@
  *		steve@msdev.co.uk
  *
  * REFERENCES:
- *		FM XML Custom functions on github https://github.com/matatirosolutions/fm-xml-cf
  *		Michael Wallace's initial XPath function http://www.briandunning.com/cf/976
  * 		Andy Knasinski's 'extract data' custom function http://www.briandunning.com/cf/1
  * =====================================
@@ -47,7 +49,7 @@ Let ([
 	Brac			= Middle ( XPath; Position ( XPath; "["; 1; 1) + 1; Position ( XPath; "]"; 1; 1) - Position ( XPath; "["; 1; 1) -1 );
 	SafePath		= Substitute ( XPath; Brac; ( Substitute ( Brac; "/"; "~|~") ) );
 	
-	// find the name of the node, and the sepcific instance where requested
+	// find the name of the node, and the specific instance where requested
   	NodeList		= Substitute(SafePath; "/"; "¶");
 	FirstNode		= Substitute ( GetValue(NodeList; 2); "~|~"; "/" );
 	Node			= Case ( Position ( FirstNode; "["; 1 ; 1) = 0; FirstNode; Left ( FirstNode; Position ( FirstNode; "["; 1 ; 1) - 1 ) ); 
@@ -70,7 +72,7 @@ Let ([
 	);
 
 	// drop the first node of the front of the path and recurse if necesary
-	NewPath		= Substitute (XPath; "/" & FirstNode; "");
+	NewPath		= Right(XPath; Length(XPath) - Length("/" & FirstNode));
 	Result		= Case(IsEmpty(NewPath) or NewPath  = "/"; SubXML; XMLXPath(SubXML; NewPath))
     ];
   Result
