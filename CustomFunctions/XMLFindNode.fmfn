@@ -20,7 +20,7 @@
  *		stack		A 'stack' of matched XML nodes which have already been matched
  *
  * DEPENDENCIES:
- *		none
+ *		XMLFindNode
  *
  * VARIABLES:
  *		none
